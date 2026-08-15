@@ -1,3 +1,11 @@
-<script setup></script>
+<script setup>
+import { pwaInstall } from "@/composables/pwaInstall";
 
-<template></template>
+const { esInstalable, instalarPwa } = pwaInstall();
+</script>
+
+<template>
+    <router-view />
+</template>
+
+<style scoped></style>
