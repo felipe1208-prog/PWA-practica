@@ -8,7 +8,6 @@ export default defineConfig({
     vue(),
     VitePWA({
       registerType: "prompt",
-      includeAssets: ["hero.png"],
       manifest: {
         name: "DBPWA",
         short_name: "Gestión Clientes DB",
@@ -18,9 +17,20 @@ export default defineConfig({
         display: "standalone",
         icons: [
           {
-            src: "/ico.ico",
-            sizes: "any",
-            type: "image/icos.ico",
+            src: "/image-192x192.png",
+            sizes: "192x192",
+            type: "image/png",
+          },
+          {
+            src: "/image-512x512.png",
+            sizes: "512x512",
+            type: "image/png",
+          },
+          {
+            src: "/image-512x512.png",
+            sizes: "512x512",
+            type: "image/png",
+            purpose: "any maskable",
           },
         ],
       },
