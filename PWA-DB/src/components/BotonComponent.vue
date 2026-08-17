@@ -4,10 +4,6 @@ defineProps({
         type: String,
         default: "",
     },
-    activo: {
-        type: Boolean,
-        default: true,
-    },
 });
 </script>
 

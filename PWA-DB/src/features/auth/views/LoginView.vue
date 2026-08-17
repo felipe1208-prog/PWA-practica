@@ -18,7 +18,6 @@ const estaCargando = ref(false);
 
 const procesarLogin = async () => {
     mensajeError.value = "";
-    console.log("Datos capturados:", cci.value, usuario.value, password.value);
 
     try {
         const response = await authStore.login(
@@ -26,8 +25,14 @@ const procesarLogin = async () => {
             usuario.value,
             password.value,
         );
+        console.log(
+            "Datos capturados:",
+            cci.value,
+            usuario.value,
+            password.value,
+        );
         estaCargando.value = true;
-        // console.log(respone);
+        console.log("Sesion iniciada");
     } catch (error) {
         console.error(error);
     } finally {
@@ -87,7 +92,14 @@ onMounted(() => {
                 />
             </div>
             <div class="btn">
-                <BotonComponent :activo="estaCargando" texto="Iniciar Sesión" />
+                <button
+                    class="btn"
+                    :disabled="estaCargando"
+                    @click="procesarLogin"
+                    type="submit"
+                >
+                    Iniciar Sesión
+                </button>
             </div>
             <p class="texto-bajo">¿Olvidaste tu contraseña?</p>
         </form>
@@ -139,11 +151,35 @@ img {
     gap: 0.3rem;
 }
 
+.btn {
+    background-color: var(--rojo-db, #d32f2f);
+    color: #ffffff;
+    font-family: var(--titulos, sans-serif);
+    font-size: 16px;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    height: 45px;
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow:
+        6px 6px 12px rgba(0, 0, 0, 0.25),
+        -6px -6px 12px rgba(255, 255, 255, 0.3);
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn:active {
+    background-color: var(--naranja-db);
+}
+
 .select {
     font-family: var(--descripcion);
     font-size: 15px;
-    width: 100%;
-    max-width: 200px;
+    max-width: 100%;
+    width: 200px;
     height: 40px;
     padding: 0.5rem 2.5rem 0.5rem 1rem;
     box-sizing: border-box;
@@ -208,13 +244,17 @@ img {
 
 @media (min-width: 384px) {
     .select {
-        max-width: 250px;
+        width: 250px;
         height: 50px;
         font-size: 17px;
     }
 
     .texto-bajo {
         font-size: 15px;
+    }
+
+    .btn {
+        font-size: 18px;
     }
 }
 </style>
