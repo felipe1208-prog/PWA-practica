@@ -7,10 +7,18 @@
     --titulos: Helvetica;
     --subtitulos: Arial;
     --descripcion: Trebuchet, Arial;
+
+    --sombra-clara: #ffffff;
+    --sombra-oscura: rgba(174, 174, 192, 0.4);
+}
+
+body {
+    background-color: #f0f0f3;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }

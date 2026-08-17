@@ -4,38 +4,45 @@ defineProps({
         type: String,
         default: "",
     },
+    activo: {
+        type: Boolean,
+        default: true,
+    },
 });
 </script>
 
 <template>
-    <button type="submit" class="btn">{{ texto }}</button>
+    <button :disabled="activo" type="submit" class="btn">{{ texto }}</button>
 </template>
 
 <style scoped>
 .btn {
+    background-color: var(--rojo-db, #d32f2f);
+    color: #ffffff;
+    font-family: var(--titulos, sans-serif);
+    font-size: 16px;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
     width: 100%;
-    display: flex;
-    justify-content: center;
-    background-color: var(--rojo-db);
-    color: white;
-    border-radius: 5px;
-    border: 1px solid var(--rojo-db);
-    height: 100%;
-    font-family: var(--descripcion);
-    font-size: 15px;
-    font-weight: bold;
-    padding: 0.5rem;
-    transition: background-color 0.1s ease;
+    height: 45px;
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow:
+        6px 6px 12px rgba(0, 0, 0, 0.25),
+        -6px -6px 12px rgba(255, 255, 255, 0.3);
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn:active {
+    background-color: var(--naranja-db);
 }
 
 @media (min-width: 384px) {
     .btn {
         font-size: 18px;
     }
-}
-
-.btn:active {
-    background-color: var(--naranja-db);
-    border: 1px solid var(--naranja-db);
 }
 </style>

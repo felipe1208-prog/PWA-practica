@@ -94,6 +94,7 @@ const alternarVisibilidad = () => {
     font-family: var(--descripcion);
     padding: 0.5rem;
     padding-right: 2.5rem;
+    padding-left: 1rem;
     font-size: 15px;
     color: black;
     border: 1px solid black;
@@ -102,6 +103,14 @@ const alternarVisibilidad = () => {
     height: 40px;
     transition: all 0.3s ease;
     box-sizing: border-box;
+    background-color: var(--fondo-neumorfico, #f0f0f3);
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    box-shadow:
+        inset 4px 4px 8px rgba(174, 174, 192, 0.4),
+        inset -4px -4px 8px #ffffff;
+    color: #4b5563;
 }
 
 .input:focus {
@@ -111,13 +120,13 @@ const alternarVisibilidad = () => {
 
 .btn-toggle {
     position: absolute;
-    right: 8px;
+    right: 12px;
     top: 50%;
     transform: translateY(-50%);
     background: transparent;
     border: none;
     cursor: pointer;
-    color: black;
+    color: #4b5563;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -146,6 +155,7 @@ const alternarVisibilidad = () => {
     .input {
         height: 50px;
         font-size: 17px;
+        border-radius: 15px;
     }
 }
 </style>

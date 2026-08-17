@@ -16,7 +16,7 @@
 .container {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100dvh;
 }
 
 .contenido {
@@ -30,21 +30,22 @@
 .footer {
     display: flex;
     flex-direction: row;
-    background-color: var(--rojo-db);
     min-width: 100%;
     padding: 2.4rem;
-    box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.712);
+    justify-content: center;
+    align-items: center;
 }
 
 .slogan {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .footer p {
-    color: white;
+    color: gray;
     font-family: var(--descripcion);
-    text-shadow: 0px 1px 4px black;
     font-size: 15px;
 }
 

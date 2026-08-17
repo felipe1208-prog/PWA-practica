@@ -14,6 +14,7 @@ const mensajeError = ref("");
 const empresas = ref([]);
 const cci = ref("");
 const nombreEmpresa = ref("");
+const estaCargando = ref(false);
 
 const procesarLogin = async () => {
     mensajeError.value = "";
@@ -25,9 +26,12 @@ const procesarLogin = async () => {
             usuario.value,
             password.value,
         );
+        estaCargando.value = true;
         // console.log(respone);
     } catch (error) {
         console.error(error);
+    } finally {
+        estaCargando.value = false;
     }
 };
 
@@ -83,8 +87,9 @@ onMounted(() => {
                 />
             </div>
             <div class="btn">
-                <BotonComponent texto="Iniciar Sesión" />
+                <BotonComponent :activo="estaCargando" texto="Iniciar Sesión" />
             </div>
+            <p class="texto-bajo">¿Olvidaste tu contraseña?</p>
         </form>
     </div>
 </template>
@@ -99,7 +104,10 @@ onMounted(() => {
 .formulario {
     display: flex;
     flex-direction: column;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.411);
+    background-color: #f0f0f3;
+    box-shadow:
+        10px 10px 20px var(--sombra-oscura),
+        -10px -10px 20px var(--sombra-clara);
     border-radius: 10px;
     padding: 1rem;
     gap: 1rem;
@@ -133,28 +141,45 @@ img {
 
 .select {
     font-family: var(--descripcion);
-    padding: 0.5rem;
-    padding-right: 2.5rem;
     font-size: 15px;
-    color: black;
-    border: 1px solid black;
-    border-radius: 5px;
+    width: 100%;
+    max-width: 200px;
     height: 40px;
-    width: 200px;
-    transition: all 0.3s ease;
+    padding: 0.5rem 2.5rem 0.5rem 1rem;
     box-sizing: border-box;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background-color: var(--fondo-neumorfico, #f0f0f3);
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    color: #4b5563;
+    box-shadow:
+        inset 4px 4px 8px rgba(174, 174, 192, 0.4),
+        inset -4px -4px 8px #ffffff;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 18px;
 }
 
-@media (min-width: 384px) {
-    .select {
-        width: 250px;
-        height: 50px;
-        font-size: 17px;
-    }
+.select:focus {
+    box-shadow:
+        inset 6px 6px 12px rgba(174, 174, 192, 0.5),
+        inset -6px -6px 12px #ffffff;
 }
 
-.opciones {
-    color: gray;
+.select option {
+    background-color: white;
+    color: #333333;
+    padding: 10px;
+}
+
+.select option:disabled {
+    color: #9ca3af;
 }
 
 .subtitulo {
@@ -168,5 +193,28 @@ img {
     justify-content: center;
     align-items: center;
     height: 3rem;
+}
+
+.texto-bajo {
+    font-family: var(--descripcion);
+    font-size: 12px;
+    text-decoration: underline;
+    margin-top: 0.5rem;
+}
+
+.texto-bajo:active {
+    color: var(--rojo-db);
+}
+
+@media (min-width: 384px) {
+    .select {
+        max-width: 250px;
+        height: 50px;
+        font-size: 17px;
+    }
+
+    .texto-bajo {
+        font-size: 15px;
+    }
 }
 </style>
