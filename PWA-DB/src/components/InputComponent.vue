@@ -121,6 +121,17 @@ const alternarVisibilidad = () => {
     opacity: 0.7;
 }
 
+.input::-ms-reveal,
+.input::-ms-clear {
+    display: none;
+}
+
+.input::-webkit-credentials-auto-fill-button {
+    visibility: hidden;
+    display: none !important;
+    pointer-events: none;
+}
+
 @media (min-width: 384px) {
     .input-wrapper {
         max-width: 250px;
