@@ -1,30 +1,91 @@
 <script setup>
 import InputComponent from "../../../components/InputComponent.vue";
 import BotonComponent from "../../../components/BotonComponent.vue";
+import { onMounted, ref } from "vue";
+import { useAuthStore } from "../../../stores/auth.js";
+import { useRouter } from "vue-router";
+import api from "../../../api/axios.js";
+
+const router = useRouter();
+const authStore = useAuthStore();
+const usuario = ref("");
+const password = ref("");
+const mensajeError = ref("");
+const empresas = ref([]);
+const cci = ref("");
+const nombreEmpresa = ref("");
+
+const procesarLogin = async () => {
+    mensajeError.value = "";
+    console.log("Datos capturados:", cci.value, usuario.value, password.value);
+
+    try {
+        const response = await authStore.login(
+            cci.value,
+            usuario.value,
+            password.value,
+        );
+        // console.log(respone);
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+const recibirEmpresas = async () => {
+    try {
+        const response = await api.get("/auth/empresa");
+        empresas.value = response.data;
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+onMounted(() => {
+    recibirEmpresas();
+});
 </script>
 
 <template>
     <div class="main-container">
-        <div class="formulario">
-            <img src="../../../../public/image-192x192.png" alt="" />
-            <div class="titulo">
+        <form class="formulario" @submit.prevent="procesarLogin">
+            <img src="/image-192x192.png" alt="" />
+            <!-- <div class="titulo">
                 <h1 class="label">Bienvenido</h1>
+            </div> -->
+            <div class="inputs">
+                <select v-model="cci" class="select">
+                    <option value="" class="opciones" disabled>
+                        Empresa...
+                    </option>
+                    <option
+                        :value="empresa.cci"
+                        v-for="empresa in empresas"
+                        :key="empresa.cci"
+                    >
+                        {{ empresa.del }}
+                    </option>
+                </select>
             </div>
             <div class="inputs">
-                <h4 class="subtitulo">Usuario</h4>
-                <InputComponent tipo="text" placeholder="User123..." />
-            </div>
-            <div class="inputs">
-                <h4 class="subtitulo">Contraseña</h4>
+                <!-- <h4 class="subtitulo">Usuario</h4> -->
                 <InputComponent
+                    v-model="usuario"
+                    tipo="text"
+                    placeholder="Usuario..."
+                />
+            </div>
+            <div class="inputs">
+                <!-- <h4 class="subtitulo">Contraseña</h4> -->
+                <InputComponent
+                    v-model="password"
                     tipo="password"
-                    placeholder="Disbattery456..."
+                    placeholder="Contraseña..."
                 />
             </div>
             <div class="btn">
                 <BotonComponent texto="Iniciar Sesión" />
             </div>
-        </div>
+        </form>
     </div>
 </template>
 
@@ -59,7 +120,7 @@ img {
     font-size: 35px;
     font-family: var(--titulos);
     font-weight: bold;
-    color: var(--azul-db);
+    color: var(--rojo-db);
     text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.164);
 }
 
@@ -68,6 +129,32 @@ img {
     justify-content: center;
     flex-direction: column;
     gap: 0.3rem;
+}
+
+.select {
+    font-family: var(--descripcion);
+    padding: 0.5rem;
+    padding-right: 2.5rem;
+    font-size: 15px;
+    color: black;
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 40px;
+    width: 200px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+@media (min-width: 384px) {
+    .select {
+        width: 250px;
+        height: 50px;
+        font-size: 17px;
+    }
+}
+
+.opciones {
+    color: gray;
 }
 
 .subtitulo {

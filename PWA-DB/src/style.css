@@ -1,7 +1,8 @@
 :root {
     /*Colores DB ejemplo*/
-    --azul-db: #080053;
-    --naranja-db: #df7700;
+    --rojo-db: #d80016;
+    --naranja-db: #e87500;
+    --amarillo-db: #ffcc00;
 
     --titulos: Helvetica;
     --subtitulos: Arial;

@@ -1,6 +1,8 @@
 <script setup>
 import { ref, computed } from "vue";
 
+const modelo = defineModel();
+
 const props = defineProps({
     placeholder: {
         type: String,
@@ -28,7 +30,12 @@ const alternarVisibilidad = () => {
 
 <template>
     <div class="input-wrapper">
-        <input class="input" :type="tipoDinamico" :placeholder="placeholder" />
+        <input
+            v-model="modelo"
+            class="input"
+            :type="tipoDinamico"
+            :placeholder="placeholder"
+        />
         <button
             v-if="tipo === 'password'"
             type="button"
@@ -88,8 +95,8 @@ const alternarVisibilidad = () => {
     padding: 0.5rem;
     padding-right: 2.5rem;
     font-size: 15px;
-    color: var(--azul-db);
-    border: 1px solid var(--azul-db);
+    color: black;
+    border: 1px solid black;
     border-radius: 5px;
     width: 100%;
     height: 40px;
@@ -110,7 +117,7 @@ const alternarVisibilidad = () => {
     background: transparent;
     border: none;
     cursor: pointer;
-    color: var(--azul-db);
+    color: black;
     display: flex;
     align-items: center;
     justify-content: center;

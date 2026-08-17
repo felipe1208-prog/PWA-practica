@@ -30,7 +30,7 @@
 .footer {
     display: flex;
     flex-direction: row;
-    background-color: var(--azul-db);
+    background-color: var(--rojo-db);
     min-width: 100%;
     padding: 2.4rem;
     box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.712);

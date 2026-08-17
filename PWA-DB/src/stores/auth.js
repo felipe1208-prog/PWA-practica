@@ -9,10 +9,15 @@ export const useAuthStore = defineStore("auth", {
     }),
 
     actions: {
-        async login(user, password) {
-            const respuesta = await api.post("/auth/login", { user, password });
+        async login(cci, user, password) {
+            const respuesta = await api.post("/auth/login", {
+                cci: cci,
+                user: user,
+                password: password,
+            });
             this.estaAutenticado = true;
             this.usuario = respuesta.data;
+            return respuesta.data;
         },
     },
 });
