@@ -1,6 +1,7 @@
 <script setup>
 import { RouterView, RouterLink } from "vue-router";
 import { pwaInstall } from "../composables/pwaInstall";
+import BadgeSyncComponent from "../components/BadgeSyncComponent.vue";
 
 const { esInstalable, instalarPwa } = pwaInstall();
 </script>
@@ -16,13 +17,18 @@ const { esInstalable, instalarPwa } = pwaInstall();
         <!--Area desplazable de la app-->
         <div class="area-desplazable">
             <header class="header">
-                <input id="checkbox" type="checkbox" />
-                <label class="toggle" for="checkbox">
-                    <div id="bar1" class="bars"></div>
-                    <div id="bar2" class="bars"></div>
-                    <div id="bar3" class="bars"></div>
-                </label>
-                <img src="/public/logo-grande.png" alt="" class="logo-db" />
+                <div class="izq">
+                    <input id="checkbox" type="checkbox" />
+                    <label class="toggle" for="checkbox">
+                        <div id="bar1" class="bars"></div>
+                        <div id="bar2" class="bars"></div>
+                        <div id="bar3" class="bars"></div>
+                    </label>
+                    <img src="/public/logo-grande.png" alt="" class="logo-db" />
+                </div>
+                <div class="derecha">
+                    <BadgeSyncComponent :cantidad="0" />
+                </div>
             </header>
 
             <main class="main-container">
@@ -39,10 +45,25 @@ const { esInstalable, instalarPwa } = pwaInstall();
 .header {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /* border: 1px solid black; */
+}
+
+.izq {
+    display: flex;
+    justify-content: flex-start;
     padding: 0.5rem;
     padding-left: 1rem;
     align-items: center;
-    /* border: 1px solid black; */
+}
+
+.derecha {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0.5rem;
+    padding-right: 1rem;
 }
 
 #checkbox {
@@ -58,7 +79,7 @@ const { esInstalable, instalarPwa } = pwaInstall();
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 7.5px;
+    gap: 7px;
     transition-duration: 0.3s;
     background-color: var(--fondo-neumorfico, #f0f0f3);
     border-radius: 12px;
@@ -74,7 +95,7 @@ const { esInstalable, instalarPwa } = pwaInstall();
 }
 
 .bars {
-    width: 24px;
+    width: 23px;
     height: 3px;
     background-color: var(--rojo-db);
     border-radius: 5px;
@@ -136,6 +157,42 @@ const { esInstalable, instalarPwa } = pwaInstall();
 
 .pwa-btn:active {
     transform: scale(0.95);
+}
+
+@media (min-width: 375px) {
+    .logo-db {
+        width: 180px;
+        height: 55px;
+    }
+
+    .toggle {
+        transform: scale(1.1);
+    }
+
+    .toggle:active {
+        transform: scale(1.1);
+        box-shadow:
+            inset 4px 4px 8px rgba(174, 174, 192, 0.4),
+            inset -4px -4px 8px #ffffff;
+    }
+}
+
+@media (min-width: 384px) {
+    .logo-db {
+        width: 200px;
+        height: 60px;
+    }
+
+    .toggle {
+        transform: scale(1.2);
+    }
+
+    .toggle:active {
+        transform: scale(1.2);
+        box-shadow:
+            inset 4px 4px 8px rgba(174, 174, 192, 0.4),
+            inset -4px -4px 8px #ffffff;
+    }
 }
 
 /* REGLA DE SEGURIDAD MÁXIMA */
