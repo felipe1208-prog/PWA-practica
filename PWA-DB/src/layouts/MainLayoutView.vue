@@ -20,9 +20,11 @@ const { esInstalable, instalarPwa } = pwaInstall();
                 <div class="izq">
                     <input id="checkbox" type="checkbox" />
                     <label class="toggle" for="checkbox">
-                        <div id="bar1" class="bars"></div>
-                        <div id="bar2" class="bars"></div>
-                        <div id="bar3" class="bars"></div>
+                        <div class="grupo-lineas">
+                            <div id="bar1" class="bars"></div>
+                            <div id="bar2" class="bars"></div>
+                            <div id="bar3" class="bars"></div>
+                        </div>
                     </label>
                     <img src="/public/logo-grande.png" alt="" class="logo-db" />
                 </div>
@@ -70,16 +72,23 @@ const { esInstalable, instalarPwa } = pwaInstall();
     display: none;
 }
 
+.grupo-lineas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    transform: scale(0.8);
+}
+
 .toggle {
     position: relative;
     width: 35px;
     height: 35px;
     cursor: pointer;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 7px;
     transition-duration: 0.3s;
     background-color: var(--fondo-neumorfico, #f0f0f3);
     border-radius: 12px;
@@ -95,11 +104,13 @@ const { esInstalable, instalarPwa } = pwaInstall();
 }
 
 .bars {
-    width: 23px;
+    width: 25px;
     height: 3px;
     background-color: var(--rojo-db);
     border-radius: 5px;
     transition-duration: 0.3s;
+    flex-shrink: 0;
+    transform: translateZ(0);
 }
 
 #checkbox:checked + .toggle #bar1 {
