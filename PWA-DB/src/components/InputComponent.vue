@@ -148,6 +148,17 @@ const alternarVisibilidad = () => {
     pointer-events: none;
 }
 
+@media (min-width: 375px) {
+    .input-wrapper {
+        max-width: 225px;
+    }
+    .input {
+        height: 45px;
+        font-size: 16px;
+        border-radius: 14px;
+    }
+}
+
 @media (min-width: 384px) {
     .input-wrapper {
         max-width: 250px;

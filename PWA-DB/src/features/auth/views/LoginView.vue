@@ -32,7 +32,7 @@ const procesarLogin = async () => {
             password.value,
         );
         estaCargando.value = true;
-        console.log("Sesion iniciada");
+        router.push({ name: "home" });
     } catch (error) {
         console.error(error);
     } finally {
@@ -240,6 +240,22 @@ img {
 
 .texto-bajo:active {
     color: var(--rojo-db);
+}
+
+@media (min-width: 375px) {
+    .select {
+        width: 225px;
+        height: 45px;
+        font-size: 16px;
+    }
+
+    .texto-bajo {
+        font-size: 14px;
+    }
+
+    .btn {
+        font-size: 17px;
+    }
 }
 
 @media (min-width: 384px) {
