@@ -8,12 +8,16 @@ export default defineConfig({
         vue(),
         VitePWA({
             registerType: "prompt",
+            useCredentials: true,
+            devOptions: {
+                enabled: true,
+            },
             manifest: {
                 name: "DBPWA",
                 short_name: "Gestión Clientes DB",
                 description: "PWA para gestión de clientes de Disbattery",
-                theme_color: "#ffffff",
-                background_color: "#ffffff",
+                theme_color: "#F0F0F3",
+                background_color: "#F0F0F3",
                 display: "standalone",
                 icons: [
                     {

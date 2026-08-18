@@ -4,7 +4,6 @@ export function pwaInstall() {
     const eventoInstalacion = ref(null);
     const esInstalable = ref(false);
     const validarInstalacion = (evento) => {
-        evento.preventDefault();
         eventoInstalacion.value = evento;
         esInstalable.value = true;
     };
