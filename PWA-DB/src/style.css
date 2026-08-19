@@ -10,6 +10,8 @@
 
     --sombra-clara: #ffffff;
     --sombra-oscura: rgba(174, 174, 192, 0.4);
+
+    --fondo-neumorfico: #f0f0f3;
 }
 
 body {

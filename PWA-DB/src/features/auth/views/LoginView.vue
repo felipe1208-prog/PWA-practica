@@ -25,12 +25,6 @@ const procesarLogin = async () => {
             usuario.value,
             password.value,
         );
-        console.log(
-            "Datos capturados:",
-            cci.value,
-            usuario.value,
-            password.value,
-        );
         estaCargando.value = true;
         router.push({ name: "home" });
     } catch (error) {

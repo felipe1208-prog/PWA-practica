@@ -1,9 +1,16 @@
 <script setup>
-import { RouterView, RouterLink } from "vue-router";
+import { RouterView, RouterLink, useRouter, useRoute } from "vue-router";
 import { pwaInstall } from "../composables/pwaInstall";
 import BadgeSyncComponent from "../components/BadgeSyncComponent.vue";
 
 const { esInstalable, instalarPwa } = pwaInstall();
+
+const router = useRouter();
+const route = useRoute();
+
+const navegar = (nombreRuta) => {
+    router.push({ name: nombreRuta });
+};
 </script>
 
 <template>
@@ -39,7 +46,118 @@ const { esInstalable, instalarPwa } = pwaInstall();
         </div>
 
         <!--Area fija (nav)-->
-        <nav class="nav-inferior"></nav>
+        <nav class="nav-inferior">
+            <ul class="nav-links">
+                <div class="nav-medio">
+                    <li
+                        class="nav-item"
+                        :class="{ active: route.name === 'home' }"
+                        @click="navegar('home')"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="22"
+                            height="22"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path
+                                d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+                            ></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                    </li>
+                    <li
+                        class="nav-item"
+                        :class="{ active: route.name === 'busqueda' }"
+                        @click="navegar('busqueda')"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="22"
+                            height="22"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </li>
+                    <li
+                        class="nav-item"
+                        :class="{ active: route.name === 'actions' }"
+                        @click="navegar('actions')"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="3"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                    </li>
+                    <li
+                        class="nav-item"
+                        :class="{ active: route.name === 'sync' }"
+                        @click="navegar('sync')"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="22"
+                            height="22"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path d="M21 2v6h-6"></path>
+                            <path d="M3 12a9 9 0 0 1 15-6.7L21 8"></path>
+                            <path d="M3 22v-6h6"></path>
+                            <path d="M21 12a9 9 0 0 1-15 6.7L3 16"></path>
+                        </svg>
+                    </li>
+                    <li
+                        class="nav-item"
+                        :class="{ active: route.name === 'perfil' }"
+                        @click="navegar('perfil')"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="22"
+                            height="22"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path
+                                d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
+                            ></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </li>
+                </div>
+            </ul>
+        </nav>
     </div>
 </template>
 
@@ -168,6 +286,70 @@ const { esInstalable, instalarPwa } = pwaInstall();
 
 .pwa-btn:active {
     transform: scale(0.95);
+}
+
+.nav-inferior {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    box-sizing: border-box;
+    z-index: 100;
+    margin-bottom: 20px;
+}
+
+.nav-medio {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 17px;
+    padding: 0 10px;
+    box-shadow:
+        inset 4px 4px 8px rgba(174, 174, 192, 0.5),
+        inset -4px -4px 8px #ffffff;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    box-shadow:
+        -4px -4px 8px #ffffff,
+        4px 4px 8px rgba(174, 174, 192, 0.5);
+    width: 90%;
+    border-radius: 20px;
+    background-color: var(--fondo-neumorfico);
+    padding: 5px;
+}
+
+.nav-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    box-shadow: none;
+    background-color: none;
+    color: #9ca3af;
+    transition: all 0.3s ease;
+}
+
+.nav-item.active {
+    color: var(--rojo-db, #d32f2f);
+    background-color: #ffffff;
+    box-shadow:
+        4px 4px 8px rgba(174, 174, 192, 0.5),
+        -4px -4px 8px #ffffff;
 }
 
 @media (min-width: 375px) {

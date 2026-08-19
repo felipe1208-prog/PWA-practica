@@ -16,13 +16,35 @@ const router = createRouter({
             ],
         },
         {
-            path: "/home",
+            path: "/app",
             component: () => import("@/layouts/MainLayoutView.vue"),
             children: [
                 {
-                    path: "",
+                    path: "home",
                     name: "home",
                     component: () => import("@/features/home/HomeView.vue"),
+                },
+                {
+                    path: "busqueda",
+                    name: "busqueda",
+                    component: () =>
+                        import("@/features/busqueda/BusquedaView.vue"),
+                },
+                {
+                    path: "actions",
+                    name: "actions",
+                    component: () =>
+                        import("@/features/actions/ActionsView.vue"),
+                },
+                {
+                    path: "sincronizacion",
+                    name: "sync",
+                    component: () => import("@/features/sync/SyncView.vue"),
+                },
+                {
+                    path: "perfil",
+                    name: "perfil",
+                    component: () => import("@/features/perfil/PerfilView.vue"),
                 },
             ],
         },
