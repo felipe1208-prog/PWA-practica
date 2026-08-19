@@ -162,6 +162,21 @@ const navegar = (nombreRuta) => {
 </template>
 
 <style scoped>
+.main-container {
+    padding-bottom: 110px;
+}
+
+.area-desplazable {
+    height: 100vh;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.area-desplazable::-webkit-scrollbar {
+    display: none;
+}
+
 .header {
     display: flex;
     flex-direction: row;
@@ -349,7 +364,7 @@ const navegar = (nombreRuta) => {
     background-color: #ffffff;
     box-shadow:
         4px 4px 8px rgba(174, 174, 192, 0.5),
-        -4px -4px 8px #ffffff;
+        -2px -2px 10px #ffffff;
 }
 
 @media (min-width: 375px) {
@@ -368,6 +383,29 @@ const navegar = (nombreRuta) => {
             inset 4px 4px 8px rgba(174, 174, 192, 0.4),
             inset -4px -4px 8px #ffffff;
     }
+
+    .nav-inferior {
+        height: 75px;
+    }
+
+    .nav-links {
+        padding: 6px;
+        border-radius: 22px;
+    }
+
+    .nav-medio {
+        padding: 0 12px;
+    }
+
+    .nav-item {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+    }
+
+    .nav-item svg {
+        transform: scale(1.1);
+    }
 }
 
 @media (min-width: 384px) {
@@ -385,6 +423,29 @@ const navegar = (nombreRuta) => {
         box-shadow:
             inset 4px 4px 8px rgba(174, 174, 192, 0.4),
             inset -4px -4px 8px #ffffff;
+    }
+
+    .nav-inferior {
+        height: 80px;
+    }
+
+    .nav-links {
+        padding: 7px;
+        border-radius: 24px;
+    }
+
+    .nav-medio {
+        padding: 0 14px;
+    }
+
+    .nav-item {
+        width: 55px;
+        height: 55px;
+        border-radius: 14px;
+    }
+
+    .nav-item svg {
+        transform: scale(1.2);
     }
 }
 
