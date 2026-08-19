@@ -8,13 +8,13 @@ export function useBuscador() {
         buscadorAbierto.value = true;
     };
 
-    const cerraBuscador = () => {
+    const cerrarBuscador = () => {
         buscadorAbierto.value = false;
     };
 
     return {
         buscadorAbierto,
         abrirBuscador,
-        cerraBuscador,
+        cerrarBuscador,
     };
 }

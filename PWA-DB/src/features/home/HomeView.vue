@@ -1,11 +1,14 @@
 <script setup>
 import SearchInputComponent from "../../components/SearchInputComponent.vue";
 import BotonComponent from "../../components/BotonComponent.vue";
+import { useBuscador } from "../../composables/useBuscador.js";
+
+const { abrirBuscador } = useBuscador();
 </script>
 
 <template>
     <div class="container">
-        <div class="container-busqueda">
+        <div class="container-busqueda" @click="abrirBuscador">
             <SearchInputComponent placeholder="¿Qué producto necesitas?">
                 <template #icono>
                     <svg
