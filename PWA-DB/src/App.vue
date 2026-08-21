@@ -12,6 +12,7 @@ const { esInstalable, instalarPwa } = pwaInstall();
 const route = useRoute();
 
 watch(
+    //verifica el cambio de pestana para cerrar el overlay de busqueda
     () => route.path,
     () => {
         if (buscadorAbierto.value) {
