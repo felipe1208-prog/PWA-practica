@@ -2,6 +2,7 @@
 import SearchInputComponent from "../../components/SearchInputComponent.vue";
 import BotonComponent from "../../components/BotonComponent.vue";
 import { useBuscador } from "../../composables/useBuscador.js";
+import AccesosRapidos from "../../components/AccesosRapidos.vue";
 
 const { abrirBuscador } = useBuscador();
 </script>
@@ -28,12 +29,7 @@ const { abrirBuscador } = useBuscador();
                 </template>
             </SearchInputComponent>
         </div>
-        <div class="container-accesos">
-            <div class="subtitulo-accesos">
-                <h1 class="subtitulo">Accesos Rápidos</h1>
-            </div>
-            <div class="raya"></div>
-        </div>
+        <AccesosRapidos></AccesosRapidos>
     </div>
 </template>
 
@@ -53,30 +49,5 @@ const { abrirBuscador } = useBuscador();
     align-items: center;
     gap: 1rem;
     width: 100%;
-}
-
-.container-accesos {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.subtitulo-accesos {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding-top: 15px;
-}
-
-.subtitulo {
-    font-family: var(--subtitulos);
-    font-size: 18px;
-}
-
-.raya {
-    background-color: #9ca3af79;
-    width: 100%;
-    height: 2px;
-    margin: 5px 0 5px 0;
 }
 </style>
