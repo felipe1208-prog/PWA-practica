@@ -29,7 +29,7 @@ const accesosRapidos = ref(accesos);
         </div>
         <div class="grilla-8">
             <div
-                class="cuadro-accesos"
+                class="cuadro-acceso"
                 v-for="item in accesosRapidos"
                 :key="item.posicion"
             >
@@ -89,7 +89,7 @@ const accesosRapidos = ref(accesos);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 5px;
     width: 100%;
     min-width: 0;
     cursor: pointer;
