@@ -18,6 +18,7 @@ const estaCargando = ref(false);
 
 const procesarLogin = async () => {
     mensajeError.value = "";
+    router.push({ name: "home" });
 
     try {
         const response = await authStore.login(
@@ -26,7 +27,6 @@ const procesarLogin = async () => {
             password.value,
         );
         estaCargando.value = true;
-        router.push({ name: "home" });
     } catch (error) {
         console.error(error);
     } finally {
