@@ -148,8 +148,38 @@ const accesosRapidos = ref(accesos);
         height: 55px;
         border-radius: 16px;
     }
+
     .nombre {
         font-size: 12px;
+    }
+
+    .subtitulo {
+        font-size: 16px;
+    }
+
+    .icono {
+        width: 26px;
+        height: 26px;
+    }
+}
+
+@media (min-width: 384px) {
+    .btn-neumorfico {
+        width: 60px;
+        height: 60px;
+        border-radius: 16px;
+    }
+    .nombre {
+        font-size: 12px;
+    }
+
+    .subtitulo {
+        font-size: 17px;
+    }
+
+    .icono {
+        width: 28px;
+        height: 28px;
     }
 }
 </style>
